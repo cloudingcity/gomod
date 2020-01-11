@@ -1,0 +1,25 @@
+language: go
+
+sudo: false
+
+env:
+  - GO111MODULE=on
+
+go:
+  - 1.12.x
+
+cache:
+  directories:
+    - "$HOME/gopath/pkg/mod"
+
+script:
+  - make lint
+  - make test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email: false
+  slack:
+    secure: "ClRsfLPc4Yu/h2NlS3WFydL236q1qed9V6dYaXY2x3nZ7Gl5acQHFu3XuhLJNcc5sFRU/XxXaq7isQE0DwYBImRaCJhiJ1+1hlgvExz/YpmTapuRWKBGjuyQKOKgqCCi3HPTmiyHH5JXI1Cx8qcbtyoxcTv3PQmPixofJzBmQWzEw4qasUwvLZoS9XBXrdnWTeV6gr3tystLDAf3K4hBJZ2Cko4PRGDQj3SV2MlyFtatzxgdB1NDq9jKpTOUtFIyq82W5tCgyjILTSO3hvoK58Ay+TVl+Dz06LlmWJHNCVsg15/J7Ikvnixph0HpBn4pPqnKCF/Ql0K5ygX2gshIw+A+RZkVyoVIbGIvT63rQdLVJxQRSz0zLz/Z+D1ldxGQFvNzTMVGN772k+JMiWwycnGvR8JB9X8kGqUt9Q2b/mc/YAcCa1Pd/GbIP8zLKyeaa9zfPp6gPNThHn0i+NCkWYzBVZAcRSS+6ThMISts2S+v74XAf1aMS8HFII/qcNaAWJNIOIEEXziY54e+EwEuE/UZ6+tfsgt1sVL35SJimePJkuZUCqhHvs/fJQewCIT7pX4E6Im8MbJ6cDZO2uXzMr1TivGcLLMX9hGtWq6gblyGrkAkLn5OEn2dkyhKpiEJE8esAeVUYsBq8Wpyxl0psQcPogiTkEfFIGlDXyki+1o="
