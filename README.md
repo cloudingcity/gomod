@@ -25,7 +25,7 @@ import (
 )
 
 func main() {
-	file, err := ioutil.ReadFile("../go.mod")
+	file, err := ioutil.ReadFile("go.mod")
 	if err != nil {
 		panic(err)
 	}
@@ -36,12 +36,32 @@ func main() {
 	}
 
 	fmt.Printf("%+v", mod)
-	// type GoMod struct {
-	//  	Module  Module
-	//  	Go      string
-	//  	Require []Require
-	//  	Exclude []Module
-	//  	Replace []Replace
-	// }
+}
+```
+
+## Struct
+```go
+type Module struct {
+	Path    string
+	Version string
+}
+
+type GoMod struct {
+	Module  Module
+	Go      string
+	Require []Require
+	Exclude []Module
+	Replace []Replace
+}
+
+type Require struct {
+	Path     string
+	Version  string
+	Indirect bool
+}
+
+type Replace struct {
+	Old Module
+	New Module
 }
 ```
